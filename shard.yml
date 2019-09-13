@@ -1,0 +1,18 @@
+name: crystalexbot
+version: 0.1.0
+
+authors:
+  - Chris Watson <cawatson1993@gmail.com>
+
+targets:
+  crystalexbot:
+    main: src/crystalexbot.cr
+
+dependencies:
+  tourmaline:
+    github: watzon/tourmaline
+    branch: master
+
+crystal: 0.30.1
+
+license: MIT
