@@ -122,4 +122,11 @@ class CrystalExBot < Tourmaline::Bot
 end
 
 bot = CrystalExBot.new(ENV["CB_API_KEY"])
-bot.poll
+if webhook_url = ENV["CB_WEBHOOK_URL"]?
+  port = ENV["CB_WEBHOOK_PORT"]? || 6969
+  host = ENV["CB_WEBHOOK_HOST"]? || "0.0.0.0"
+  bot.set_webhook(webhook_url)
+  bot.serve(host, port)
+else
+  bot.poll
+end
