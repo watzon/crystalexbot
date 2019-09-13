@@ -8,7 +8,9 @@ class CrystalExBot < Tourmaline::Bot
 
   RESPONSE_TEMPLATE = <<-MARKDOWN
   **Arguments:**
-  `%{args}`
+  ```
+  %{args}
+  ```
 
   **Result:**
   ```
@@ -19,7 +21,7 @@ class CrystalExBot < Tourmaline::Bot
   MARKDOWN
 
   ERROR_TEMPLATE = <<-MARKDOWN
-  "**Error**:
+  **Error**:
   ```
   %{error}
   ```
@@ -59,7 +61,7 @@ class CrystalExBot < Tourmaline::Bot
     begin
       result, execution_time = execute_crystal(args, code)
 
-      args = args.empty? ? "[]" : args
+      args = args.empty? ? "[]" : args.to_s
       result = result.empty? ? "no output" : result
       response = RESPONSE_TEMPLATE % {args: args, result: result, seconds: execution_time}
       message.reply(response, parse_mode: :markdown)
