@@ -126,7 +126,7 @@ if webhook_url = ENV["CB_WEBHOOK_URL"]?
   port = ENV["CB_WEBHOOK_PORT"]? || 6969
   host = ENV["CB_WEBHOOK_HOST"]? || "0.0.0.0"
   bot.set_webhook(webhook_url)
-  bot.serve(host, port)
+  bot.serve(host, port.to_i)
 else
   bot.poll
 end
